@@ -22,6 +22,7 @@
             name: '',
             host: '',
             protocol: '',
+            protocol_version: false,
             port: null,
             path: '',
             retries: 5,
@@ -69,6 +70,7 @@
           },
 
           update: function (service) {
+            delete service.protocol_version;
             return $http.patch('kong/services/' + service.id, service)
           },
 
@@ -81,6 +83,7 @@
           },
 
           add: function (service) {
+            delete service.protocol_version;
             return $http.post('kong/services/', service)
           },
 

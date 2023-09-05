@@ -4,72 +4,93 @@
  * Note that this file should only contain controllers and nothing else.
  */
 (function () {
-  'use strict';
+    'use strict';
 
-  angular.module('frontend.services')
-    .controller('ServiceController', [
-      '$scope', '$rootScope', '$state', 'SettingsService', '$log', 'AuthService', '_service',
-      function controller($scope, $rootScope, $state, SettingsService, $log,AuthService, _service) {
+    angular.module('frontend.services').controller('ServiceController', [
+        '$scope',
+        '$rootScope',
+        '$state',
+        'SettingsService',
+        '$log',
+        'AuthService',
+        '_service',
+        function controller(
+            $scope,
+            $rootScope,
+            $state,
+            SettingsService,
+            $log,
+            AuthService,
+            _service
+        ) {
+            $scope.service = _service.data;
+            $scope.service.protocol_version = toggleHttpVersion(
+                _service.data.protocol
+            );
+            // Fix empty object properties
+            fixProperties();
 
-        $scope.service = _service.data
+            $state.current.data.pageName =
+                'Service ' + ($scope.service.name || $scope.service.id);
+            $scope.activeSection = 0;
+            $scope.sections = [
+                {
+                    name: 'Service Details',
+                    icon: 'mdi mdi-information-outline',
+                    isVisible: true,
+                },
+                {
+                    name: 'Routes',
+                    icon: 'mdi mdi-directions-fork',
+                    isVisible: AuthService.hasPermission('routes', 'read'),
+                },
+                {
+                    name: 'Plugins',
+                    icon: 'mdi mdi-power-plug',
+                    isVisible: AuthService.hasPermission('plugins', 'read'),
+                },
+                {
+                    name: 'Eligible consumers <span class="label label-danger">beta</span>',
+                    icon: 'mdi mdi-account-multiple-outline',
+                    isVisible: true,
+                },
+                // {
+                //     name : 'Health Checks',
+                //     icon : 'mdi mdi-heart-pulse',
+                //     isVisible : true
+                // }
+            ];
 
-        // Fix empty object properties
-        fixProperties()
+            $scope.showSection = function (index) {
+                $scope.activeSection = index;
+            };
 
-        $state.current.data.pageName = "Service " + ($scope.service.name || $scope.service.id)
-        $scope.activeSection = 0;
-        $scope.sections = [
-          {
-            name: 'Service Details',
-            icon: 'mdi mdi-information-outline',
-            isVisible: true
-          },
-          {
-            name: 'Routes',
-            icon: 'mdi mdi-directions-fork',
-            isVisible: AuthService.hasPermission('routes','read')
-          },
-          {
-            name: 'Plugins',
-            icon: 'mdi mdi-power-plug',
-            isVisible: AuthService.hasPermission('plugins','read')
-          },
-          {
-            name: 'Eligible consumers <span class="label label-danger">beta</span>',
-            icon: 'mdi mdi-account-multiple-outline',
-            isVisible: true
-          },
-          // {
-          //     name : 'Health Checks',
-          //     icon : 'mdi mdi-heart-pulse',
-          //     isVisible : true
-          // }
-        ]
-
-
-        $scope.showSection = function (index) {
-          $scope.activeSection = index
-        }
-
-        function fixProperties() {
-          var problematicProperties = ['uris', 'hosts', 'methods']
-          problematicProperties.forEach(function (property) {
-            if ($scope.service[property] && isObject($scope.service[property]) && !Object.keys($scope.service[property]).length) {
-              $scope.service[property] = ""
+            function fixProperties() {
+                var problematicProperties = ['uris', 'hosts', 'methods'];
+                problematicProperties.forEach(function (property) {
+                    if (
+                        $scope.service[property] &&
+                        isObject($scope.service[property]) &&
+                        !Object.keys($scope.service[property]).length
+                    ) {
+                        $scope.service[property] = '';
+                    }
+                });
             }
-          })
-        }
 
-        function isObject(obj) {
-          return obj === Object(obj);
-        }
+            function isObject(obj) {
+                return obj === Object(obj);
+            }
 
+            function toggleHttpVersion(protocol) {
+                if (protocol == 'http' || protocol == 'https') {
+                    return false;
+                } else return true;
+            }
 
-        $scope.$on('user.node.updated', function (node) {
-          $state.go('services')
-        })
-
-      }
-    ])
-  ;
-}());
+            $scope.$on('user.node.updated', function (node) {
+                $state.go('services');
+            });
+        },
+    ]);
+})();

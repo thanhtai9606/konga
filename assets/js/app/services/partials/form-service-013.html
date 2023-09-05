@@ -51,7 +51,24 @@
     </div>
 </div>
 <!--/ END EXTRAS -->
-
+<div class="form-group">
+  <label class="col-sm-4 control-label"
+    >Protocol <code>http/2</code><br /><em><small class="help-block">optional</small></em></label
+  >
+  <div class="col-sm-7">
+    <input
+      bs-switch
+      ng-model="service.protocol_version"
+      switch-size="small"
+      type="checkbox"
+      switch-on-text="YES"
+      switch-off-text="NO"
+    />
+    <p class="help-block">
+      Http protocol version with <code>http/1</code> or <code>http/2</code>. The default is <code>http/1</code>
+    </p>
+  </div>
+</div>
 <div class="form-group" ng-class="{'has-error' : errors.url}" ng-if="!service.id">
     <label class="col-sm-4 control-label">Url <br><em><small class="help-block">shorthand-attribute</small></em></label>
     <div class="col-sm-7">
@@ -69,7 +86,7 @@
     <div class="col-sm-7">
         <input ng-model="service.protocol" class="form-control">
         <div class="text-danger" ng-if="errors.protocol" data-ng-bind="errors.protocol"></div>
-        <p class="help-block">The protocol used to communicate with the upstream.  It can be one of <code>http</code> or <code>https</code>.</p>
+        <p class="help-block">The protocol used to communicate with the upstream.  It can be one of <code>http</code>,  <code>https</code> or <code>gprc</code>, <code>gprcs</code>.</p>
     </div>
 </div>
 
@@ -92,7 +109,7 @@
 </div>
 
 
-<div class="form-group" ng-class="{'has-error' : errors.path}">
+<div class="form-group" ng-class="{'has-error' : errors.path}" ng-if="!service.protocol_version">
     <label class="col-sm-4 control-label">Path <br><em><small class="help-block">optional</small></em></label>
     <div class="col-sm-7">
         <input ng-model="service.path" class="form-control">
