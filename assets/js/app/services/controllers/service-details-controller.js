@@ -34,6 +34,9 @@
           // Kong 1.x compat
           delete data.data;
 
+          resetPathHttp2(data)
+          delete data.protocol_version;
+
           ServiceService.update(data)
             .then(function (res) {
               console.log("Update Service: ", res)
@@ -72,6 +75,9 @@
           }).catch(function (err) {
             console.error(err);
           })
+        }
+        function resetPathHttp2(data){
+          data.path = data.protocol_version? null: data.path          
         }
 
         function isKongUsingPostgres() {

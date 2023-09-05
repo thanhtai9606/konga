@@ -31,6 +31,7 @@
           clearService()
 
 
+          delete $scope.service.protocol_version
           ServiceService.add($scope.service)
             .then(function (res) {
               $rootScope.$broadcast('service.created')
