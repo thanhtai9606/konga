@@ -4,7 +4,8 @@
 
 'use strict'
 
-var mysql = require("../../node_modules/sails-mysql/node_modules/mysql");
+// var mysql = require("../../node_modules/sails-mysql/node_modules/mysql");
+var mysql = require("mysql");
 var dbConf = require("../../config/datastores");
 var URL = require('url');
 var _ = require('lodash');
