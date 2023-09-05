@@ -252,7 +252,11 @@ var KongPluginService = _.merge(_.cloneDeep(require('./KongService')), {
           },
           "session": {
             description: "Support sessions for Kong Authentication Plugins."
+          },
+          "grpc-web": {
+            description: "Hello world."
           }
+
         }
       },
       {
