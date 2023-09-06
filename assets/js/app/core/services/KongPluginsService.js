@@ -77,7 +77,7 @@
                                     description:
                                         'Add a key authentication to your APIs',
                                 },
-                                oauth2: {
+                                'oauth2': {
                                     description:
                                         'Add an OAuth 2.0 authentication to your APIs',
                                 },
@@ -85,7 +85,7 @@
                                     description:
                                         'Add HMAC Authentication to your APIs',
                                 },
-                                jwt: {
+                                'jwt': {
                                     description:
                                         'Verify and authenticate JSON Web Tokens',
                                 },
@@ -93,9 +93,13 @@
                                     description:
                                         'Integrate Kong with a LDAP server',
                                 },
-                                session: {
+                                'session': {
                                     description:
                                         'Support sessions for Kong Authentication Plugins.',
+                                },
+                                'kong-oidc': {
+                                    description:
+                                        'OpenID Connect or OIDC is an identity protocol that utilizes the authorization and authentication mechanisms of OAuth 2.0',
                                 },
                             },
                         },
