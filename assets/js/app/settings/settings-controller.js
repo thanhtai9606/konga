@@ -32,7 +32,7 @@
                     id: 'general',
                     name: 'General Setting',
                     templateUrl: 'general-setting.html',
-                    description: 'Make some settings like fresh page and base Url',
+                    description: 'Make some settings like refresh page and base Url',
                     isAdded: false,
                     icon: 'mdi-home'
                 },
@@ -56,7 +56,7 @@
                     id: 'auth-provider',
                     name: 'Auth Provider',
                     templateUrl: 'auth-provider-setting.html',
-                    description: 'Configure mutliple Authentication Providers like Ldap, Oidc, Internal',
+                    description: 'Configure mutliple Authentication Providers like internal, ldap, oidc...',
                     isAdded: false,
                     icon: 'mdi-security-lock'
                 },
