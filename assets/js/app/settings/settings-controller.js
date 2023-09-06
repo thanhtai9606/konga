@@ -34,7 +34,7 @@
                     templateUrl: 'general-setting.html',
                     description: 'Make some settings like fresh page and base Url',
                     isAdded: false,
-                    icon: 'home'
+                    icon: 'mdi-home'
                 },
                 {
                     id: 'notification',
@@ -42,7 +42,7 @@
                     templateUrl: 'notification-setting.html',
                     description: 'Settings all notification in your system',
                     isAdded: false,
-                    icon: 'home'
+                    icon: 'mdi-message'
                 },
                 {
                     id: 'user-permissions',
@@ -50,6 +50,7 @@
                     templateUrl: 'permissions-setting.html',
                     description: 'Configure permissions for users can be access',
                     isAdded: false,
+                    icon: 'mdi-security-account'
                 },
                 {
                     id: 'auth-provider',
@@ -57,7 +58,7 @@
                     templateUrl: 'auth-provider-setting.html',
                     description: 'Configure mutliple Authentication Providers like Ldap, Oidc, Internal',
                     isAdded: false,
-                    icon: 'security'
+                    icon: 'mdi-security-lock'
                 },
 
                 {
@@ -66,7 +67,7 @@
                     templateUrl: 'signup-restriction-setting.html',
                     description: 'Enable/Disable Registristration ',
                     isAdded: false,
-                    icon: 'security'
+                    icon: 'mdi-security-close'
                 },
             ];
 
