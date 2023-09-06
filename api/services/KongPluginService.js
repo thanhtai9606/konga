@@ -317,10 +317,10 @@ var KongPluginService = _.merge(_.cloneDeep(require('./KongService')), {
             description: "Invoke an AWS Lambda function from Kong. It can be used in combination with other request plugins to secure, manage or extend the function."
           },
           "pre-function": {
-            description: "Dynamically run Lua code from Kong during access phase."
+            description: "Dynamically run Lua code before from Kong during access phase."
           },
           "post-function": {
-            description: "Dynamically run Lua code from Kong during access phase."
+            description: "Dynamically run Lua code after from Kong during access phase."
           },
           "azure-functions": {
             description: "This plugin invokes Azure Functions. It can be used in combination with other request plugins to secure, manage or extend the function"
