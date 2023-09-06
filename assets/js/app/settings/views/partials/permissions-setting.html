@@ -1,0 +1,27 @@
+<!-- USER PERMISSIONS -->
+<div class="col-md-12">
+    <hr />
+    <h3>User permissions</h3>
+    <hr />
+    <div
+        class="row"
+        data-ng-repeat="(context,permissions) in KONGA_CONFIG.user_permissions"
+    >
+        <div class="col-md-12">
+            <h6>{{context.toUpperCase()}}</h6>
+            <div class="well">
+                <label
+                    class="checkbox-inline margin-right"
+                    data-ng-repeat="(key,value) in permissions"
+                >
+                    <input
+                        type="checkbox"
+                        ng-change="updateKongaSettings()"
+                        ng-model="KONGA_CONFIG.user_permissions[context][key]"
+                    />
+                    {{key}}
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
