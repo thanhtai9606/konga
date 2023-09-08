@@ -15,7 +15,7 @@ var async = require("async");
  */
 module.exports.models = {
     datastore: 'default',
-    migrate: 'alter',
+    migrate: 'safe',
     fetchRecordsOnUpdate: true,
     fetchRecordsOnDestroy: true,
     fetchRecordsOnCreate: true,

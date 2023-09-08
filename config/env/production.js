@@ -12,7 +12,8 @@
  */
 
 var fs = require('fs');
-
+const orgins = process.env.ONLY_ALLOW_ORIGINS || "http://localhost:1337";
+let allowOrigins = orgins.split(",")
 module.exports = {
   hookTimeout: process.env.KONGA_HOOK_TIMEOUT || 60000,
 
@@ -41,7 +42,9 @@ module.exports = {
   log: {
       level: process.env.KONGA_LOG_LEVEL || "warn"
   },
-
+  sockets: {
+    onlyAllowOrigins: allowOrigins 
+ },
   // Keep data of response errors in production mode
   keepResponseErrors : true
 
