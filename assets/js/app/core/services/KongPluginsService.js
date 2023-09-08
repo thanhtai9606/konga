@@ -97,7 +97,7 @@
                                     description:
                                         'Support sessions for Kong Authentication Plugins.',
                                 },
-                                'kong-oidc': {
+                                'oidc': {
                                     description:
                                         'OpenID Connect or OIDC is an identity protocol that utilizes the authorization and authentication mechanisms of OAuth 2.0',
                                 },
