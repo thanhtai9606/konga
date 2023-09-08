@@ -14,7 +14,7 @@
 var fs = require('fs');
 
 module.exports = {
-  hookTimeout: process.env.KONGA_HOOK_TIMEOUT || 60000,
+  // hookTimeout: process.env.KONGA_HOOK_TIMEOUT || 60000,
 
   port: process.env.PORT || 1337,
 
